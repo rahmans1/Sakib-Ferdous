@@ -20,17 +20,28 @@ public class DisplayMessageActivity extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Set the text view as the activity layout
+        setContentView(R.layout.fragment_display_message);
+
+
+
+
         // Get the message from the intent
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String origin = intent.getStringExtra(MainActivity.EXTRA_ORIGIN);
+        String destination = intent.getStringExtra(MainActivity.EXTRA_DESTINATION);
 
         // Create the text view
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(message);
+        TextView textDestination = (TextView) findViewById(R.id.textViewDestination);
+        textDestination.setTextSize(20);
+        textDestination.setText(String.format("Destination: "+"%s",destination));
 
-        // Set the text view as the activity layout
-        setContentView(textView);
+        TextView textOrigin = (TextView) findViewById(R.id.textViewOrigin);
+        textOrigin.setTextSize(20);
+        textOrigin.setText(String.format("Origin: "+"%s",origin));
+
+
+
     }
 
 

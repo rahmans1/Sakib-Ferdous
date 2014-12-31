@@ -15,7 +15,8 @@ import android.widget.EditText;
 
 
 public class MainActivity extends ActionBarActivity {
-    public final static String EXTRA_MESSAGE = "com.gmail.rasad03.busbangla20.MESSAGE";
+    public final static String EXTRA_ORIGIN = "com.gmail.rasad03.busbangla20.ORIGIN";
+    public final static String EXTRA_DESTINATION = "com.gmail.rasad03.busbangla20.DESTINATION";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +69,13 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
+        Intent intent = new Intent(this, DisplayMessageActivity.class); // intent to pass information between main and display message activity
+        EditText editOrigin = (EditText) findViewById(R.id.edit_origin);
+        EditText editDestination = (EditText) findViewById(R.id.edit_destination);
+        String textOrigin = editOrigin.getText().toString();
+        String textDestination = editDestination.getText().toString();
+        intent.putExtra(EXTRA_DESTINATION, textDestination);
+        intent.putExtra(EXTRA_ORIGIN, textOrigin);
         startActivity(intent);
     }
 }
